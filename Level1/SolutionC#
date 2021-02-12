@@ -1,0 +1,31 @@
+        public static int[] Answer(int[] input, int n)
+        {
+            if (input.Length > 100 || n <= 0)
+            {
+                return null;
+            }
+            Dictionary<int, int> occurencnceOfNumber = new Dictionary<int, int>();
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (occurencnceOfNumber.ContainsKey(input[i]))
+                {
+                    occurencnceOfNumber[input[i]]++;
+                }
+                else
+                {
+                    occurencnceOfNumber.Add(input[i], 1);
+                }
+            }
+            int[] output = new int[input.Length];
+            int j = 0;
+            foreach (KeyValuePair<int, int> item in occurencnceOfNumber)
+            {
+                if (item.Value == n)
+                {
+                    output[j] = item.Key;
+                    j++;
+                }
+            }
+            return output;
+        }
